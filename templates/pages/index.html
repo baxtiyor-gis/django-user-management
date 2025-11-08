@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+
+
+{% block content %}
+<h1>Home</h1>
+
+{% if user.is_authenticated  %}
+    <p>Salom, {{ user.username }}!</p>
+{%else %}
+    <p>Salom, Mehmon!</p>
+{% endif %}
+
+
+{% endblock %}

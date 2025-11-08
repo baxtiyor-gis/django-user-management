@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+
+
+{% block content %}
+<h1>Tizimga kirish</h1>
+
+{% if messages %}
+    {% for msg in messages %}
+        <p style="color:red">{{  msg }}</p>
+    {% endfor %}
+
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <p>Username</p>
+        <input type="text" name="username">
+    </div>
+    <div>
+        <p>Parol</p>
+        <input type="password" name="password">
+    </div>
+    <br>
+    <div>
+        <button type="submit">Kirish</button>
+    </div>
+</form>
+
+{% endblock %}
