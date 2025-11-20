@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+
+
+{% block content %}
+<h1>Ro'yxatdan o'tish</h1>
+
+{% if messages %}
+    {% for msg in messages %}
+        <p style="color:red">{{  msg }}</p>
+    {% endfor %}
+
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="mb-3">
+        <label>{{ field.label }}</label>
+        {{ field }}
+        {# 🔽 bu qatorni olib tashla, shunda help text chiqmaydi #}
+        {# <small class="text-muted">{{ field.help_text }}</small> #}
+        {% if field.errors %}
+            <div class="text-danger small">{{ field.errors|striptags }}</div>
+        {% endif %}
+    </div>
+{% endfor %}
+    <br>
+    <button type="submit">Yuborish</button>
+</form>
+
+{% endblock %}
